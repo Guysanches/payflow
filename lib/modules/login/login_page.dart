@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:payflow/modules/login/login_controller.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
 import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 import 'package:payflow/shared/widgets/social_login_button/social_login_button.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +62,9 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding:
                         const EdgeInsets.only(top: 40, left: 40, right: 40),
-                    child: SocialLoginButton(
-                      onTap: () {},
-                    ),
+                    child: SocialLoginButton(onTap: () {
+                      controller.googleSignIn(context);
+                    }),
                   )
                 ],
               ),
